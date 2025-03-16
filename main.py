@@ -45,9 +45,9 @@ async def info_command(message: Message):
 @dp.message(lambda message: message.text in "Лёгкий пароль")
 async def easy_password(message: Message):
     password = ""
-    for _ in range(random.randint(5, 6)):
+    for _ in range(random.randint(8, 10)):
         password += chr(ord('a') + random.randint(0, 25))
-    await message.answer(f"Сгенерированный пароль: {password}")
+    await message.answer(f'Сгенерированный пароль: `{password}`', parse_mode="Markdown")
 
 @dp.message(lambda message: message.text in "Средний пароль")
 async def medium_password(message: Message):
@@ -57,7 +57,7 @@ async def medium_password(message: Message):
         password += chr(ord('A') + random.randint(0, 25))
         password += str(random.randint(0, 9))
     password += random.choice("!@#$%^&*()_+=-{}[];':\",.<>/?")
-    await message.answer(f"Сгенерированный пароль: {password}")
+    await message.answer(f'Сгенерированный пароль: `{password}`', parse_mode="Markdown")
 
 @dp.message(lambda message: message.text in "Сложный пароль")
 async def hard_password(message: Message):
@@ -69,7 +69,7 @@ async def hard_password(message: Message):
     password += random.choice("!@#$%^&*()_+=-{}[];':\",.<>/?")
     for _ in range(random.randint(0, 5)):
         password += random.choice(string.ascii_letters + string.digits + "!@#$%^&*()_+=-{}[]|;':\",.<>/?")
-    await message.answer(f"Сгенерированный пароль: {password}")
+    await message.answer(f'Сгенерированный пароль: `{password}`', parse_mode="Markdown")
 
 
 @dp.message(Command("generate_password"))
